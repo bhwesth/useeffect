@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Empty from './components/Empty';
+import None from './components/None';
+import Used from './components/Used';
 
 function App() {
+  const [state, setState] = useState(1)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='app-content'>
+      <h2>App</h2>
+      <button onClick={() => setState(prevState => prevState+1)}>Click</button>
+      <p>App state changed {state} times.</p>
+      </div>
+    <div className='content'>
+      <None />
+      <Empty />
+      <Used />
+      </div>
     </div>
   );
 }
